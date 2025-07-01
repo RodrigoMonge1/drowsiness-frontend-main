@@ -49,7 +49,7 @@ export default function Login() {
       {/* Botón Volver al Inicio */}
       <Link
         to="/"
-        className="absolute top-6 left-6 text-white hover:underline text-sm bg-blue-700 px-3 py-1 rounded-md shadow-md hover:bg-blue-800 transition"
+        className="absolute top-6 left-6 text-white hover:underline text-sm font-medium transition"
       >
         ← Volver al inicio
       </Link>
