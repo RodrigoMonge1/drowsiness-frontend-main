@@ -1,3 +1,1 @@
-// src/config.js
-
-export const API_URL = process.env.VITE_API_URL || "drowsiness-backend-main-production.up.railway.app";
+export const API_URL = import.meta.env.VITE_API_URL || "https://drowsiness-backend-main-production.up.railway.app";
