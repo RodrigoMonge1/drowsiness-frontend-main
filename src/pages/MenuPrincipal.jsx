@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import logo from "../assets/logo_somno1.png";
+import logoSomno from "../assets/logo_somno1.png";
 
 export default function MenuPrincipal() {
   const { userId, logout } = useAuth();
@@ -29,11 +29,11 @@ export default function MenuPrincipal() {
       )}
 
       {/* Logo centrado arriba */}
-      <img src={logo} alt="Logo de la app" className="w-24 h-24 mb-4" />
+      <img src={logoSomno} alt="Logo SomnoLive" className="w-48 h-48 mb-6" />
 
       {/* Título */}
       <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-wide">
-        Drowsiness Detector
+        Bienvenido a SomnoLive
       </h1>
 
       {/* Descripción orientada a estudiantes y trabajadores */}
