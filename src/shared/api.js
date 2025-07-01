@@ -40,12 +40,12 @@ export async function loginUsuario(email, password) {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await manejarRespuesta(res); // <- { token, userId }
+    const data = await manejarRespuesta(res); 
     if (!data.token || !data.userId) {
       throw new Error("Respuesta incompleta del servidor");
     }
 
-    guardarToken(data.token); // Solo guarda el token
+    guardarToken(data.token); 
     return {
       token: data.token,
       userId: data.userId,
