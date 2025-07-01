@@ -14,11 +14,20 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const passwordSegura = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setExito("");
 
+    if (!passwordSegura.test(form.password)) {
+        setError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número");
+       return;
+    }
+
+    
     if (form.password !== form.repassword) {
       setError("Las contraseñas no coinciden");
       return;
