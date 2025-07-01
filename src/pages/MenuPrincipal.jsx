@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import logo from "../assets/logo1.png";
+import logo from "../assets/logo_somno1.png";
 
 export default function MenuPrincipal() {
   const { userId, logout } = useAuth();
