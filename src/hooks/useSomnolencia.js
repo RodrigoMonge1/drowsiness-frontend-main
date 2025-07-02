@@ -22,7 +22,7 @@ export function useSomnolencia() {
   const tiempoBocaAbierta = useRef(null);
   const ultimoEventoRef = useRef(Date.now());
   const tiempoInicioRef = useRef(Date.now());
-  const haIniciadoRef = useRef(false); // ✅ Previene múltiples inicios
+  const haIniciadoRef = useRef(false); 
 
   const puntosOjoIzq = [33, 160, 158, 133, 153, 144];
   const puntosOjoDer = [362, 385, 387, 263, 373, 380];
@@ -57,13 +57,13 @@ export function useSomnolencia() {
         tiempoInicioRef.current = Date.now();
       } else {
         console.error("Error al iniciar sesión:", err);
-        haIniciadoRef.current = false; // Permitir reintento
+        haIniciadoRef.current = false; 
       }
     }
   }
 
   async function finalizarSesionBackend(idSesion, eventosRegistrados = []) {
-    haIniciadoRef.current = false; // ✅ Permitir iniciar de nuevo después
+    haIniciadoRef.current = false; 
 
     try {
       const token = localStorage.getItem("jwt_token");
@@ -75,8 +75,9 @@ export function useSomnolencia() {
       const duracion = Math.round((tiempoFin - tiempoInicio) / 1000);
 
       const eventosArray = Array.isArray(eventosRegistrados) ? eventosRegistrados : [];
-      const niveles = eventosArray.map(e => e.prob || 0);
-      const nivelMax = niveles.length > 0 ? Math.max(...niveles) : probabilidad;
+      const valoresHistorial = historial.map(h => h.valor);
+      const nivelMax = valoresHistorial.length > 0 ? Math.max(...valoresHistorial) : probabilidad;
+
       const promedio = niveles.length > 0
         ? Math.round(niveles.reduce((a, b) => a + b, 0) / niveles.length)
         : probabilidad;
@@ -268,9 +269,9 @@ export function useSomnolencia() {
     finalizarSesionBackend,
     sesionId,
     calcularEAR,
-    aumentarProbabilidad,    // <-- AGREGA ESTO
-    disminuirProbabilidad,   // <-- Y ESTO
-    agregarEvento            // <-- Y ESTO
+    aumentarProbabilidad,    
+    disminuirProbabilidad, 
+    agregarEvento           
   };
 
 }
