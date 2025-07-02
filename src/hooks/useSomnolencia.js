@@ -76,10 +76,10 @@ export function useSomnolencia() {
 
       const eventosArray = Array.isArray(eventosRegistrados) ? eventosRegistrados : [];
 
-      // ✅ CORREGIDO: calcular el nivelMax con historial
       const nivelMax = historial.length > 0
         ? Math.max(...historial.map(h => h.valor))
         : probabilidad;
+
 
       const promedio = eventosArray.length > 0
         ? Math.round(eventosArray.reduce((acc, e) => acc + (e.prob || 0), 0) / eventosArray.length)
