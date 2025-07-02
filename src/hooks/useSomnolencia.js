@@ -63,7 +63,7 @@ export function useSomnolencia() {
   }
 
   async function finalizarSesionBackend(idSesion, eventosRegistrados = []) {
-    haIniciadoRef.current = false; 
+    haIniciadoRef.current = false;
 
     try {
       const token = localStorage.getItem("jwt_token");
@@ -75,11 +75,14 @@ export function useSomnolencia() {
       const duracion = Math.round((tiempoFin - tiempoInicio) / 1000);
 
       const eventosArray = Array.isArray(eventosRegistrados) ? eventosRegistrados : [];
-      const valoresHistorial = historial.map(h => h.valor);
-      const nivelMax = valoresHistorial.length > 0 ? Math.max(...valoresHistorial) : probabilidad;
 
-      const promedio = niveles.length > 0
-        ? Math.round(niveles.reduce((a, b) => a + b, 0) / niveles.length)
+      // ✅ CORREGIDO: calcular el nivelMax con historial
+      const nivelMax = historial.length > 0
+        ? Math.max(...historial.map(h => h.valor))
+        : probabilidad;
+
+      const promedio = eventosArray.length > 0
+        ? Math.round(eventosArray.reduce((acc, e) => acc + (e.prob || 0), 0) / eventosArray.length)
         : probabilidad;
 
       await axios.patch(`${API_URL}/sesiones/${idSesion}/finalizar`, {
@@ -269,9 +272,8 @@ export function useSomnolencia() {
     finalizarSesionBackend,
     sesionId,
     calcularEAR,
-    aumentarProbabilidad,    
-    disminuirProbabilidad, 
-    agregarEvento           
+    aumentarProbabilidad,
+    disminuirProbabilidad,
+    agregarEvento
   };
-
 }
