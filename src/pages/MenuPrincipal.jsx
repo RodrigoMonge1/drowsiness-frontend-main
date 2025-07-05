@@ -62,14 +62,16 @@ export default function MenuPrincipal() {
         <p className="text-slate-100 mb-4">
           Para ejecutar la detección en segundo plano sin interrupciones, puedes descargar la versión de escritorio para Windows.
         </p>
-        <a
-          href="/DeteccionSomnolencia.exe"
-          download
-          className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-200"
-        >
+          <a
+            href="https://drive.google.com/uc?export=download&id=1WoiVSLM6LX_-z0jJDOv9G5dp-3wjrhBi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-200"
+          >
           Descargar versión de escritorio
         </a>
       </div>
+
     </div>
   );
 }
