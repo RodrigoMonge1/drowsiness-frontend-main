@@ -4,6 +4,9 @@
 # build output
 /dist
 
+/public/DeteccionSomnolencia.exe
+
+
 # environment variables
 .env
 .env.*.local
