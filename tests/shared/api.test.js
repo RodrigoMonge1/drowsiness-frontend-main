@@ -1,8 +1,8 @@
 // tests/shared/api.test.js
 beforeAll(() => {
-  // Simula la variable de entorno usada en src/shared/api.js
   process.env.VITE_API_URL = "http://localhost:3001";
 });
+
 
 import {
   loginUsuario,
